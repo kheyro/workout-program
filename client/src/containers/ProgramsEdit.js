@@ -8,7 +8,7 @@ class ProgramsEdit extends Component {
     super(props);
     this.state = {
       id: props.program.id,
-      title: props.program.title,
+      name: props.program.name,
       description: props.program.description
     }
   }
@@ -32,13 +32,13 @@ class ProgramsEdit extends Component {
         <form onSubmit={this.handleSubmit}>
 
           <div>
-            <label htmlFor="title-field">Title</label>
+            <label htmlFor="name-field">Name</label>
             <input
               type="text"
-              id="title-field"
+              id="name-field"
               onChange={this.handleInputChange}
-              name="title"
-              value={this.state.title} />
+              name="name"
+              value={this.state.name} />
           </div>
 
           <div>
