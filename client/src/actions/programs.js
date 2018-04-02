@@ -47,7 +47,6 @@ export function updateProgram(program) {
 }
 
 export function removeProgram(programId) {
-  console.log('dd')
   return {
     type: actionTypes.REMOVE_PROGRAM,
     payload: programId

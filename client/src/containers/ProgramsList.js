@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { removeProgram } from "../actions/programs";
 
-import ProgramsItem from './ProgramsItem';
+import ProgramsItem from '../components/ProgramsItem';
 
 class ProgramsList extends Component {
   render() {

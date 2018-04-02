@@ -21,7 +21,9 @@ class ProgramsEdit extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.updateProgram(this.state)
+    const { updateProgram, history } = this.props;
+    updateProgram(this.state);
+    history.push('/programs');
   };
 
   render() {
@@ -48,7 +50,7 @@ class ProgramsEdit extends Component {
               value={this.state.description} />
           </div>
 
-          <button>Cancel</button> | <button type="submit">Edit</button>
+          <button onClick={this.props.history.goBack}>Cancel</button> | <button type="submit">Edit</button>
 
         </form>
       </div>

@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 import { getPrograms } from "../actions/programs";
 
-import ProgramsList from '../components/ProgramsList';
+import ProgramsList from './ProgramsList';
 import ProgramsNew from './ProgramsNew';
 import ProgramsShow from './ProgramsShow';
 
