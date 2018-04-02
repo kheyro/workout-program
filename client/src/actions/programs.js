@@ -1,4 +1,5 @@
 import actionTypes from './actionTypes';
+import 'isomorphic-fetch';
 
 const programs = [
   {
@@ -26,6 +27,7 @@ const programs = [
 
 
 export function getPrograms() {
+  let programs = fetch('http://localhost:3001/programs').then(res => res.json()).then(data => console.log(data))
   return {
     type: actionTypes.GET_PROGRAMS,
     payload: programs
