@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import { updateProgram } from '../actions/programs'
+import { updateProgram, programHasError } from '../actions/programs'
 
 class ProgramsEdit extends Component {
   constructor(props) {
@@ -13,6 +13,10 @@ class ProgramsEdit extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.programHasError(false, [])
+  }
+
   handleInputChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
@@ -22,13 +26,36 @@ class ProgramsEdit extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { updateProgram, history } = this.props;
-    updateProgram(this.state);
-    history.push('/programs');
+
+    updateProgram(this.state).then(() => {
+      if(!this.props.hasError.status) {
+        this.setState({
+          name: '',
+          description: ''
+        })
+        // history.push('/programs');
+      }
+    })
+
   };
 
   render() {
+    let error_messages;
+
+    if(this.props.hasError.status) {
+      error_messages = this.props.hasError.errors.map(error =>
+        <div>{error}</div> )
+    }
+
     return (
       <div>
+
+        <div>
+          <ul>
+            {error_messages}
+          </ul>
+        </div>
+
         <form onSubmit={this.handleSubmit}>
 
           <div>
@@ -60,7 +87,11 @@ class ProgramsEdit extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   let program = state.programs.find( program => program.id === +ownProps.match.params.programId);
-  return { program }
+  return {
+    program,
+    hasError: state.programHasError,
+    isLoading: state.programIsLoading
+  }
 };
 
-export default connect(mapStateToProps, { updateProgram })(ProgramsEdit)
+export default connect(mapStateToProps, { updateProgram, programHasError })(ProgramsEdit)

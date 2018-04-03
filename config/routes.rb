@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :programs
     resources :workouts
+    resources :exercises, only: [:index]
   end
 end

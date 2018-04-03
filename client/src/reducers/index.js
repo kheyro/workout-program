@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import { programs } from './programs';
+import { programs, programIsLoading, programHasError } from './programs';
 
 const rootReducer = combineReducers({
-  programs: programs
+  programs,
+  programIsLoading,
+  programHasError
 });
 
 export default rootReducer

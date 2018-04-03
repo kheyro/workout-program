@@ -13,7 +13,7 @@ class ProgramsPage extends Component {
   componentDidMount() {
     this.props.getPrograms();
   }
-
+//<ProgramsList programs={this.props.programs} />
   render() {
     return (
       <div>
