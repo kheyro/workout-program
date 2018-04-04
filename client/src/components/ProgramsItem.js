@@ -7,8 +7,6 @@ export default ({ match, program, removeProgram }) =>
 
     <p>{program.description}</p>
 
-    <p># of exercises: {/* program.number_exercises */}</p>
-
     <div>
       <Link to={`${match.url}/${program.id}/edit`}>Edit</Link> | <button onClick={() => removeProgram(program.id)}>Delete</button>
     </div>

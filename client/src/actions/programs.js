@@ -47,8 +47,12 @@ export function addProgram(program) {
       .then(res => Promise.all([res.ok, res.json()]))
       .then(([res, payload]) => {
         dispatch(programIsLoading(false));
-        dispatch(programHasError(false, [], 'Program successfully added!'));
-        return (!res) ? dispatch(programHasError(true, payload)) : dispatch({ type: actionTypes.ADD_PROGRAM, payload })
+        if (!res) {
+          return dispatch(programHasError(true, payload))
+        } else {
+          dispatch(programHasError(false, [], 'Program successfully added!'));
+          return dispatch({ type: actionTypes.ADD_PROGRAM, payload });
+        }
       })
 
     // can also check res.ok then throw new Error which will call .catch()
@@ -83,8 +87,12 @@ export function updateProgram(program) {
       .then(res => Promise.all([res.ok, res.json()]))
       .then(([res, payload]) => {
         dispatch(programIsLoading(false));
-        dispatch(programHasError(false, [], 'Program successfully updated!'));
-        return (!res) ? dispatch(programHasError(true, payload)) : dispatch({ type: actionTypes.UPDATE_PROGRAM, payload })
+        if (!res) {
+          return dispatch(programHasError(true, payload))
+        } else {
+          dispatch(programHasError(false, [], 'Program successfully updated!'));
+          return dispatch({ type: actionTypes.ADD_PROGRAM, payload });
+        }
       })
   }
 }

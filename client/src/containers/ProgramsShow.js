@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import { getSingleProgram } from "../actions/programs";
 import { getWorkouts,addWorkout } from "../actions/workouts";
 
+import { SubSectionLoading } from '../components/Loadings'
 import WorkoutsList from "./WorkoutsList";
 import WorkoutsForm from "./WorkoutsForm";
 
@@ -12,25 +12,28 @@ class ProgramsShow extends Component {
     this.props.getWorkouts();
   }
 
-  componentWillReceiveProps(nextProps) {
+  /*componentWillReceiveProps(nextProps) {
     if (nextProps.match.params.programId !== this.props.match.params.programId) {
       this.forceUpdate()
     }
-  }
+  }*/
 
   render() {
+    if (!this.props.program) {
+      return <SubSectionLoading loading={ { message: 'Workouts list is loading' } } />
+    }
 
     return (
       <div>
 
-        <h3>{this.props.program[0] && this.props.program[0].name}</h3>
+        <h3>{this.props.program.name}</h3>
 
-        <p>{this.props.program[0] && this.props.program[0].description}</p>
+        <p>{this.props.program.description}</p>
 
         <h4>Add a Workout</h4>
 
         <WorkoutsForm
-          programId={this.props.program[0] && this.props.program[0].id}
+          programId={this.props.program.id}
           addWorkout={this.props.addWorkout} />
 
         <h4>Exercises:</h4>
@@ -46,7 +49,8 @@ const mapStateToProps = (state, ownProps) => {
   let workouts = state.workouts.filter(workout => workout.program_id === +ownProps.match.params.programId);
   let program = state.programs.filter(program => program.id === +ownProps.match.params.programId);
   return {
-    program,
+    programIsLoading: state.programIsLoading,
+    program: program[0],
     workouts
   }
 };

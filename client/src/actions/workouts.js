@@ -29,8 +29,12 @@ export function addWorkout(workout) {
       .then(res => Promise.all([res.ok, res.json()]))
       .then(([res, payload]) => {
         dispatch(workoutIsLoading(false));
-        dispatch(workoutHasError(false, [], 'Workout successfully added!'));
-        return (!res) ? dispatch(workoutHasError(true, payload)) : dispatch({ type: actionTypes.ADD_WORKOUT, payload })
+        if (!res) {
+          return dispatch(workoutHasError(true, payload))
+        } else {
+          dispatch(workoutHasError(false, [], 'Workout successfully added!'));
+          return dispatch({ type: actionTypes.ADD_WORKOUT, payload });
+        }
       })
 
     // can also check res.ok then throw new Error which will call .catch()
