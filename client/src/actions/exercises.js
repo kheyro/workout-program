@@ -1,15 +1,21 @@
 import actionTypes from './actionTypes';
 import 'isomorphic-fetch';
-import {programIsLoading} from "./programs";
 
 export function getExercises() {
   return (dispatch) => {
-    dispatch();
-    return fetch('/url')
+    dispatch(exerciseIsLoading(true));
+    return fetch('/api/exercises')
       .then(res => res.json())
       .then(payload => {
-        dispatch(programIsLoading(false));
+        dispatch(exerciseIsLoading(false));
         return dispatch({type: actionTypes.GET_EXERCISES, payload});
       })
+  }
+}
+
+export function exerciseIsLoading(bool) {
+  return {
+    type: actionTypes.EXERCISES_IS_LOADING,
+    payload: bool
   }
 }

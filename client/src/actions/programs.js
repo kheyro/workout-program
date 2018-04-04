@@ -14,6 +14,24 @@ export function getPrograms() {
   }
 }
 
+export function getSingleProgram(programId) {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.GET_SINGLE_PROGRAM,
+      payload: { program: {}, loading: true }
+    });
+
+    return fetch(`/api/programs/${programId}`)
+      .then(res => res.json())
+      .then(payload => {
+        return dispatch({
+          type: actionTypes.GET_SINGLE_PROGRAM,
+          payload: { program: payload, loading: false }
+        });
+      })
+  }
+}
+
 export function addProgram(program) {
   return (dispatch) => {
     dispatch(programIsLoading(true));

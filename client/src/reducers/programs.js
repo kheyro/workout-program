@@ -23,6 +23,15 @@ export function programs(state = [], action) {
   }
 }
 
+export function getSingleProgram( state = { program: {}, loading: false }, action) {
+  switch(action.type) {
+    case actionTypes.GET_SINGLE_PROGRAM:
+      return Object.assign({}, state, { program: action.payload.program, loading: action.payload.loading});
+    default:
+      return state
+  }
+}
+
 export function programIsLoading(state = false, action) {
   switch(action.type) {
     case actionTypes.PROGRAM_IS_LOADING:
