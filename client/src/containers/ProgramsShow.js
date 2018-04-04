@@ -24,22 +24,17 @@ class ProgramsShow extends Component {
     }
 
     return (
-      <div>
+      <div className="row">
+        <div className="col">
+          <h2>{this.props.program.name}</h2>
+          <p className="program-description">{this.props.program.description}</p>
 
-        <h3>{this.props.program.name}</h3>
+          <h5>Add a Workout</h5>
+          <WorkoutsForm programId={this.props.program.id} addWorkout={this.props.addWorkout} />
 
-        <p>{this.props.program.description}</p>
-
-        <h4>Add a Workout</h4>
-
-        <WorkoutsForm
-          programId={this.props.program.id}
-          addWorkout={this.props.addWorkout} />
-
-        <h4>Exercises:</h4>
-
-        <WorkoutsList workouts={this.props.workouts} />
-
+          <h5>Exercises</h5>
+          <WorkoutsList workouts={this.props.workouts} />
+        </div>
       </div>
     );
   }

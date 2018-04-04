@@ -3,11 +3,20 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <div>
-      <Link to="/">Home</Link>
-      <Link to="/programs">Programs List</Link>
-      <Link to="/programs/new">New Programs</Link>
-    </div>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <a className="navbar-brand" href="#">My Workout Planner</a>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div className="navbar-nav">
+          <Link className="nav-item nav-link" to="/">Home</Link>
+          <Link className="nav-item nav-link" to="/programs">Programs List</Link>
+          <Link className="nav-item nav-link" to="/programs/new">Add a program</Link>
+        </div>
+      </div>
+    </nav>
   );
 };
 

@@ -43,40 +43,46 @@ class WorkoutsForm extends Component {
       <div>
         <FormErrors hasError={this.props.workoutHasErrorState} />
 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="form-inline">
+          <div className="form-row align-items-center">
 
-          <div>
-            <label htmlFor="workout-sets">Choose Exercise</label>
-            <select name="exercise_id" value={this.state.exercise_id} onChange={this.handleChange}>
-              {/* better to check if loading is done */}
-              <option value="0">Select</option>
-              {this.props.exercises && this.props.exercises.map(exercise => <option key={exercise.id} value={exercise.id}>{exercise.name}</option>)}
-            </select>
+            <div className="col-auto my-1">
+              <label className="sr-only" htmlFor="workout-sets">Exercise</label>
+              <select className="form-control" name="exercise_id" value={this.state.exercise_id} onChange={this.handleChange}>
+                {/* better to check if loading is done */}
+                <option value="0">Select Exercise</option>
+                {this.props.exercises && this.props.exercises.map(exercise => <option key={exercise.id} value={exercise.id}>{exercise.name}</option>)}
+              </select>
+            </div>
+
+            <div className="col-auto my-1">
+              <label className="sr-only" htmlFor="workout-sets">Sets</label>
+              <input
+                className="form-control"
+                id="workout-sets"
+                name="number_sets"
+                onChange={this.handleChange}
+                placeholder="Number of sets"
+                type="text"
+                value={this.state.number_sets} />
+            </div>
+
+            <div className="col-auto my-1">
+              <label className="sr-only" htmlFor="workout-reps">Reps</label>
+              <input
+                className="form-control"
+                id="workout-reps"
+                name="number_reps"
+                onChange={this.handleChange}
+                placeholder="Number of reps"
+                type="text"
+                value={this.state.number_reps} />
+            </div>
+
+            <div className="col-auto my-1">
+              <button type="submit" className="btn btn-info">Add Workout</button>
+            </div>
           </div>
-
-          <div>
-            <label htmlFor="workout-sets">Sets</label>
-            <input
-              id="workout-sets"
-              name="number_sets"
-              onChange={this.handleChange}
-              placeholder="0"
-              type="text"
-              value={this.state.number_sets} />
-          </div>
-
-          <div>
-            <label htmlFor="workout-reps">Reps</label>
-            <input
-              id="workout-reps"
-              name="number_reps"
-              onChange={this.handleChange}
-              placeholder="0"
-              type="text"
-              value={this.state.number_reps} />
-          </div>
-
-          <button type="submit">Add Workout</button>
         </form>
       </div>
     );

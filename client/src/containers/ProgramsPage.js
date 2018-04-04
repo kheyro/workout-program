@@ -18,11 +18,15 @@ class ProgramsPage extends Component {
       return <MainContainerLoading loading={ { message: 'Program list loading' } } />
     }
     return (
-      <div>
-        <ProgramsList match={this.props.match} programs={this.props.programs} />
-        <Switch>
-          <Route path={`${this.props.match.url}/:programId`} component={ProgramsShow} />
-        </Switch>
+      <div className="row h-100" id="program-list">
+        <div className="col-4 program-list-left-pane">
+          <ProgramsList match={this.props.match} programs={this.props.programs} />
+        </div>
+        <div className="col-8 program-list-right-pane">
+          <Switch>
+            <Route path={`${this.props.match.url}/:programId`} component={ProgramsShow} />
+          </Switch>
+        </div>
       </div>
     )
   }

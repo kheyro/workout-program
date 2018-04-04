@@ -1,10 +1,14 @@
 import React from 'react';
 
 export default ({ workout, removeWorkout }) =>
-  <li>
-    Name: {workout.exercise.name}<br/>
-    Description {workout.exercise.description}<br/>
-    Sets: {workout.number_sets}<br/>
-    Reps: {workout.number_reps}
-    <button onClick={() => removeWorkout(workout.id)}>Delete</button>
-  </li>;
+  <div>
+    <div className="row align-items-center workout-list-item">
+      <div className="col">{workout.exercise.name}</div>
+      <div className="col">{workout.exercise.description}</div>
+      <div className="col text-center">{workout.number_sets}</div>
+      <div className="col text-center">{workout.number_reps}</div>
+      <div className="col text-center">
+        <button className="btn btn-sm btn-warning" onClick={() => removeWorkout(workout.id)}>Delete</button>
+      </div>
+    </div>
+  </div>;

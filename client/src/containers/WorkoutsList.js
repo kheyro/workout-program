@@ -12,11 +12,18 @@ class WorkoutsList extends Component {
     }
 
     return (
-      <ul>
+      <div id="workouts-list">
+        <div className="row workout-list-header align-items-center">
+          <div className="col">Exercise</div>
+          <div className="col">Description</div>
+          <div className="col text-center"># of Sets</div>
+          <div className="col text-center"># of Reps</div>
+          <div className="col text-center"></div>
+        </div>
         {this.props.workouts && this.props.workouts.map(workout =>
           <WorkoutsItem key={workout.id} workout={workout} removeWorkout={this.props.removeWorkout}/>
         )}
-      </ul>
+      </div>
     );
   }
 }

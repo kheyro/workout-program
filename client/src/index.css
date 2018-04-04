@@ -1,5 +1,57 @@
+html, body, div#root, div#app, .container-fluid {
+  height: 100%
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.container-fluid {
+
+}
+
+#program-list .program-list-item {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+#program-list .program-list-right-pane {
+  padding: 30px 35px;
+  border-left: 1px solid #e4e4e4;
+}
+
+#program-list .program-list-right-pane h5 {
+  margin-top: 30px;
+}
+
+#form-errors {
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+#form-errors  .error-messages {
+  color: red;
+}
+
+#form-errors  .success-message {
+  color: forestgreen;
+}
+
+.workout-list-header {
+  font-weight: bold;
+  padding: 25px 0 10px;
+}
+
+#workouts-list .workout-list-item {
+  border-radius: 0.25em;
+  background: #e9f8fb;
+  margin: 15px 0;
+  padding: 15px 0;
 }
