@@ -27,8 +27,10 @@ class ProgramsEdit extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { updateProgram } = this.props;
+    const { updateProgram, history } = this.props;
     updateProgram(this.state).then(() => { if(!this.props.hasError.status) (this.setState({ name: '', description: '' })) })
+    history.push('/programs');
+
   };
 
   render() {
