@@ -40,7 +40,7 @@ export function programIsLoading(state = false, action) {
   }
 }
 
-export function programHasError(state = { status: false, errors: [] }, action) {
+export function programHasError(state = { status: false, errors: [], success_message: '' }, action) {
   switch(action.type) {
     case actionTypes.PROGRAM_HAS_ERROR:
       return action.payload;

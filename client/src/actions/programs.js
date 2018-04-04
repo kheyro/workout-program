@@ -47,6 +47,7 @@ export function addProgram(program) {
       .then(res => Promise.all([res.ok, res.json()]))
       .then(([res, payload]) => {
         dispatch(programIsLoading(false));
+        dispatch(programHasError(false, [], 'Program successfully added!'));
         return (!res) ? dispatch(programHasError(true, payload)) : dispatch({ type: actionTypes.ADD_PROGRAM, payload })
       })
 
@@ -82,6 +83,7 @@ export function updateProgram(program) {
       .then(res => Promise.all([res.ok, res.json()]))
       .then(([res, payload]) => {
         dispatch(programIsLoading(false));
+        dispatch(programHasError(false, [], 'Program successfully updated!'));
         return (!res) ? dispatch(programHasError(true, payload)) : dispatch({ type: actionTypes.UPDATE_PROGRAM, payload })
       })
   }
@@ -94,9 +96,9 @@ export function programIsLoading(bool) {
   }
 }
 
-export function programHasError(bool, errors) {
+export function programHasError(bool, errors, success_message) {
   return {
     type: actionTypes.PROGRAM_HAS_ERROR,
-    payload: { status: bool, errors }
+    payload: { status: bool, errors, success_message }
   }
 }

@@ -29,6 +29,7 @@ export function addWorkout(workout) {
       .then(res => Promise.all([res.ok, res.json()]))
       .then(([res, payload]) => {
         dispatch(workoutIsLoading(false));
+        dispatch(workoutHasError(false, [], 'Workout successfully added!'));
         return (!res) ? dispatch(workoutHasError(true, payload)) : dispatch({ type: actionTypes.ADD_WORKOUT, payload })
       })
 
@@ -56,9 +57,9 @@ export function workoutIsLoading(bool) {
   }
 }
 
-export function workoutHasError(bool, errors) {
+export function workoutHasError(bool, errors, success_message) {
   return {
     type: actionTypes.WORKOUT_HAS_ERROR,
-    payload: { status: bool, errors }
+    payload: { status: bool, errors, success_message }
   }
 }

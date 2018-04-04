@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 import { getExercises } from "../actions/exercises";
+import { workoutHasError } from "../actions/workouts";
 
 import { FormErrors } from "../components/Errors";
+
 
 const initialState = {
   exercise_id: 0,
@@ -22,6 +24,10 @@ class WorkoutsForm extends Component {
     this.props.getExercises();
   }
 
+  componentWillUnmount() {
+    this.props.workoutHasError(false, [], '')
+  }
+
   handleChange = (e) => this.setState({
     [e.target.name]: e.target.value
   });
@@ -29,15 +35,13 @@ class WorkoutsForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const values = Object.assign({}, this.state, {program_id: this.props.programId});
-    this.props.addWorkout(values).then(() =>
-      this.setState(initialState)
-    )
+    this.props.addWorkout(values).then(() => { if(!this.props.workoutHasErrorState.status) (this.setState(initialState)) })
   };
 
   render() {
     return (
       <div>
-        <FormErrors hasError={this.props.workoutHasError} />
+        <FormErrors hasError={this.props.workoutHasErrorState} />
 
         <form onSubmit={this.handleSubmit}>
 
@@ -83,8 +87,8 @@ const mapStateToProps = (state) => {
   return {
     exercises: state.exercises,
     workoutIsLoading: state.workoutIsLoading,
-    workoutHasError: state.workoutHasError
+    workoutHasErrorState: state.workoutHasError
   }
 };
 
-export default connect(mapStateToProps, { getExercises })(WorkoutsForm);
+export default connect(mapStateToProps, { getExercises, workoutHasError })(WorkoutsForm);

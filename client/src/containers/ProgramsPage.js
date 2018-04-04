@@ -4,9 +4,9 @@ import {connect} from "react-redux";
 
 import { getPrograms } from "../actions/programs";
 
+import { MainContainerLoading } from "../components/Loadings";
 import ProgramsList from './ProgramsList';
 import ProgramsShow from './ProgramsShow';
-
 
 class ProgramsPage extends Component {
   componentDidMount() {
@@ -15,9 +15,7 @@ class ProgramsPage extends Component {
 
   render() {
     if (this.props.programIsLoading) {
-      return (
-        <div>Loading...</div>
-      )
+      return <MainContainerLoading loading={ { message: 'Program list loading' } } />
     }
     return (
       <div>

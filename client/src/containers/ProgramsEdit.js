@@ -16,7 +16,7 @@ class ProgramsEdit extends Component {
   }
 
   componentWillUnmount() {
-    this.props.programHasError(false, [])
+    this.props.programHasError(false, [], '')
   }
 
   handleInputChange = (e) => {

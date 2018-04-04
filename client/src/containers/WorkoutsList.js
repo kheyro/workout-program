@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-
 import { removeWorkout } from "../actions/workouts";
-
 import WorkoutsItem from '../components/WorkoutsItem'
-
+import { SubSectionLoading } from "../components/Loadings";
 
 class WorkoutsList extends Component {
   render() {
 
-    if (this.props.isLoading) {
-      return (<div>Loading...</div>)
+    if (this.props.workoutIsLoading) {
+      return <SubSectionLoading loading={ { message: 'Workouts list is loading' } } />
     }
 
     return (
@@ -23,10 +21,7 @@ class WorkoutsList extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    isLoading: state.program.loading
-  }
-};
-
-export default connect(mapStateToProps, { removeWorkout })(WorkoutsList);
+export default connect(
+  state => ({ workoutIsLoading: state.workoutIsLoading }),
+  { removeWorkout }
+)(WorkoutsList);

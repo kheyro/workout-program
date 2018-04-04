@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-
 import { addProgram, programHasError } from '../actions/programs'
-
 import { FormErrors } from "../components/Errors";
 
 const initialState = {
   name: '',
-  description: ''
+  description: '',
 };
 
 class ProgramsEdit extends Component {
@@ -17,7 +15,7 @@ class ProgramsEdit extends Component {
   }
 
   componentWillUnmount() {
-    this.props.programHasError(false, [])
+    this.props.programHasError(false, [], '')
   }
 
   handleInputChange = (e) => {
@@ -28,8 +26,13 @@ class ProgramsEdit extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { addProgram } = this.props;
-    addProgram(this.state).then(() => { if(!this.props.hasError.status) (this.setState(initialState)) })
+
+    this.props.addProgram(this.state).then(() => {
+      if(!this.props.hasError.status) {
+        this.setState(initialState);
+
+      }
+    })
   };
 
   render() {

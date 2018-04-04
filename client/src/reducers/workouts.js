@@ -22,7 +22,7 @@ export function workoutIsLoading(state = false, action) {
   }
 }
 
-export function workoutHasError(state = { status: false, errors: [] }, action) {
+export function workoutHasError(state = { status: false, errors: [], success_message: '' }, action) {
   switch(action.type) {
     case actionTypes.WORKOUT_HAS_ERROR:
       return action.payload;

@@ -9,27 +9,28 @@ import WorkoutsForm from "./WorkoutsForm";
 
 class ProgramsShow extends Component {
   componentDidMount() {
-    this.props.getSingleProgram(this.props.match.params.programId);
     this.props.getWorkouts();
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.match.params.programId !== this.props.match.params.programId) {
-      this.props.getSingleProgram(nextProps.match.params.programId)
+      this.forceUpdate()
     }
   }
 
   render() {
+
     return (
       <div>
-        <h3>{this.props.program.name}</h3>
 
-        <p>{this.props.program.description}</p>
+        <h3>{this.props.program[0] && this.props.program[0].name}</h3>
+
+        <p>{this.props.program[0] && this.props.program[0].description}</p>
 
         <h4>Add a Workout</h4>
 
         <WorkoutsForm
-          programId={this.props.program.id}
+          programId={this.props.program[0] && this.props.program[0].id}
           addWorkout={this.props.addWorkout} />
 
         <h4>Exercises:</h4>
@@ -42,14 +43,15 @@ class ProgramsShow extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  let workouts = state.workouts.filter( workout => workout.program_id === +ownProps.match.params.programId);
+  let workouts = state.workouts.filter(workout => workout.program_id === +ownProps.match.params.programId);
+  let program = state.programs.filter(program => program.id === +ownProps.match.params.programId);
   return {
-    program: state.program.program,
+    program,
     workouts
   }
 };
 
 export default connect(
   mapStateToProps,
-  { getSingleProgram, getWorkouts, addWorkout }
+  { getWorkouts, addWorkout }
 )(ProgramsShow);
