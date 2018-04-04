@@ -37,31 +37,36 @@ class ProgramsEdit extends Component {
 
   render() {
     return (
-      <div>
-        <FormErrors hasError={this.props.hasError} />
+      <div className="row">
+        <div className="col-4 offset-md-4">
+          <FormErrors hasError={this.props.hasError} />
 
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="title-field">Title</label>
-            <input
-              type="text"
-              id="name-field"
-              onChange={this.handleInputChange}
-              name="name"
-              value={this.state.name} />
-          </div>
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="name-field">Program name</label>
+              <input
+                className="form-control"
+                id="name-field"
+                name="name"
+                onChange={this.handleInputChange}
+                type="text"
+                value={this.state.name} />
+            </div>
 
-          <div>
-            <label htmlFor="description-field">Description</label>
-            <textarea
-              id="description-field"
-              onChange={this.handleInputChange}
-              name="description"
-              value={this.state.description} />
-          </div>
+            <div className="form-group">
+              <label htmlFor="description-field">Description</label>
+              <textarea
+                className="form-control"
+                id="description-field"
+                onChange={this.handleInputChange}
+                name="description"
+                value={this.state.description} />
+            </div>
 
-          <button onClick={() => this.props.history.push('/programs')}>Cancel</button> <button type="submit">Add</button>
-        </form>
+            <button className="btn btn-secondary mr-2" onClick={() => this.props.history.push('/programs')}>Cancel</button>
+            <button className="btn btn-info" type="submit">Add</button>
+          </form>
+        </div>
       </div>
     )
   }

@@ -33,31 +33,33 @@ class ProgramsEdit extends Component {
 
   render() {
     return (
-      <div>
+      <div className="col-4 offset-md-4">
         <FormErrors hasError={this.props.hasError} />
 
         <form onSubmit={this.handleSubmit}>
-
-          <div>
-            <label htmlFor="name-field">Name</label>
+          <div className="form-group">
+            <label htmlFor="name-field">Program name</label>
             <input
-              type="text"
+              className="form-control"
               id="name-field"
-              onChange={this.handleInputChange}
               name="name"
+              onChange={this.handleInputChange}
+              type="text"
               value={this.state.name} />
           </div>
 
-          <div>
+          <div className="form-group">
             <label htmlFor="description-field">Description</label>
             <textarea
+              className="form-control"
               id="description-field"
               onChange={this.handleInputChange}
               name="description"
               value={this.state.description} />
           </div>
 
-          <button onClick={this.props.history.goBack}>Cancel</button> | <button type="submit">Edit</button>
+          <button className="btn btn-secondary mr-2" onClick={this.props.history.goBack}>Cancel</button>
+          <button className="btn btn-info" type="submit">Save</button>
 
         </form>
       </div>

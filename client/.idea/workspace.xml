@@ -21,18 +21,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -47,6 +35,30 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="493">
               <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProgramsNew.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/ProgramsNew.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="83">
+              <caret line="40" column="8" lean-forward="true" selection-start-line="40" selection-start-column="8" selection-end-line="63" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProgramsEdit.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/containers/ProgramsEdit.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="61" column="61" selection-start-line="61" selection-start-column="61" selection-end-line="61" selection-end-column="61" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -87,7 +99,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorkoutsItem.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WorkoutsItem.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/WorkoutsItem.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
@@ -112,18 +124,6 @@
               <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProgramsPage.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/ProgramsPage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="20" column="49" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="49" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -159,9 +159,7 @@
         <option value="$PROJECT_DIR$/src/reducers/index.js" />
         <option value="$PROJECT_DIR$/src/components/Loadings.js" />
         <option value="$PROJECT_DIR$/src/containers/ProgramsList.js" />
-        <option value="$PROJECT_DIR$/src/containers/ProgramsNew.js" />
         <option value="$PROJECT_DIR$/src/reducers/programs.js" />
-        <option value="$PROJECT_DIR$/src/containers/ProgramsEdit.js" />
         <option value="$PROJECT_DIR$/src/reducers/workouts.js" />
         <option value="$PROJECT_DIR$/src/actions/programs.js" />
         <option value="$PROJECT_DIR$/src/actions/workouts.js" />
@@ -177,6 +175,8 @@
         <option value="$PROJECT_DIR$/src/containers/WorkoutsList.js" />
         <option value="$PROJECT_DIR$/src/index.css" />
         <option value="$PROJECT_DIR$/src/components/WorkoutsItem.js" />
+        <option value="$PROJECT_DIR$/src/containers/ProgramsNew.js" />
+        <option value="$PROJECT_DIR$/src/containers/ProgramsEdit.js" />
       </list>
     </option>
   </component>
@@ -286,12 +286,12 @@
       <option name="presentableId" value="Default" />
       <updated>1522598176032</updated>
       <workItem from="1522598177727" duration="11217000" />
-      <workItem from="1522660124839" duration="67160000" />
+      <workItem from="1522660124839" duration="67617000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78377000" />
+    <option name="totallyTimeSpent" value="78834000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -486,26 +486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/ProgramsNew.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="2" lean-forward="true" selection-start-line="16" selection-start-column="2" selection-end-line="18" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/ProgramsEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/programs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -662,6 +642,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/ProgramsNew.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="40" column="8" lean-forward="true" selection-start-line="40" selection-start-column="8" selection-end-line="63" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/ProgramsEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="61" column="61" selection-start-line="61" selection-start-column="61" selection-end-line="61" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
