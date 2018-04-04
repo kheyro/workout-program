@@ -3,13 +3,17 @@ import { connect } from 'react-redux'
 
 import { addProgram, programHasError } from '../actions/programs'
 
+import { FormErrors } from "../components/Errors";
+
+const initialState = {
+  name: '',
+  description: ''
+};
+
 class ProgramsEdit extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: '',
-      description: ''
-    }
+    this.state = initialState
   }
 
   componentWillUnmount() {
@@ -24,39 +28,16 @@ class ProgramsEdit extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { addProgram, history } = this.props;
-
-    addProgram(this.state).then(() => {
-      if(!this.props.hasError.status) {
-        this.setState({
-          name: '',
-          description: ''
-        })
-        // history.push('/programs');
-      }
-    })
-
+    const { addProgram } = this.props;
+    addProgram(this.state).then(() => { if(!this.props.hasError.status) (this.setState(initialState)) })
   };
 
   render() {
-    let error_messages;
-
-    if(this.props.hasError.status) {
-      error_messages = this.props.hasError.errors.map(error =>
-        <div>{error}</div> )
-    }
-
     return (
       <div>
-
-        <div>
-          <ul>
-            {error_messages}
-          </ul>
-        </div>
+        <FormErrors hasError={this.props.hasError} />
 
         <form onSubmit={this.handleSubmit}>
-
           <div>
             <label htmlFor="title-field">Title</label>
             <input
@@ -77,7 +58,6 @@ class ProgramsEdit extends Component {
           </div>
 
           <button onClick={() => this.props.history.push('/programs')}>Cancel</button> <button type="submit">Add</button>
-
         </form>
       </div>
     )

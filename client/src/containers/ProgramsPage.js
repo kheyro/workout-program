@@ -5,7 +5,6 @@ import {connect} from "react-redux";
 import { getPrograms } from "../actions/programs";
 
 import ProgramsList from './ProgramsList';
-import ProgramsNew from './ProgramsNew';
 import ProgramsShow from './ProgramsShow';
 
 
@@ -13,11 +12,16 @@ class ProgramsPage extends Component {
   componentDidMount() {
     this.props.getPrograms();
   }
-//<ProgramsList programs={this.props.programs} />
+
   render() {
+    if (this.props.programIsLoading) {
+      return (
+        <div>Loading...</div>
+      )
+    }
     return (
       <div>
-        <ProgramsList programs={this.props.programs} />
+        <ProgramsList match={this.props.match} programs={this.props.programs} />
         <Switch>
           <Route path={`${this.props.match.url}/:programId`} component={ProgramsShow} />
         </Switch>
@@ -26,10 +30,10 @@ class ProgramsPage extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    programs: state.programs
-  }
-};
-
-export default connect(mapStateToProps, { getPrograms })(ProgramsPage);
+export default connect(
+  state => ({
+    programs: state.programs,
+    programIsLoading: state.programIsLoading
+  }),
+  { getPrograms }
+)(ProgramsPage);

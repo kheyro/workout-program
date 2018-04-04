@@ -6,8 +6,7 @@ export function programs(state = [], action) {
       return action.payload;
 
     case actionTypes.ADD_PROGRAM:
-      // return [].concat(state, Object.assign({}, action.payload));
-      return state;
+      return [].concat(state, action.payload);
 
     case actionTypes.REMOVE_PROGRAM:
       return state.filter(program => program.id !== action.payload);

@@ -42,11 +42,14 @@ class ProgramsShow extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  let workouts = state.workouts.filter( workout => workout.program_id === +ownProps.match.params.programId)
+  let workouts = state.workouts.filter( workout => workout.program_id === +ownProps.match.params.programId);
   return {
     program: state.program.program,
     workouts
   }
 };
 
-export default connect(mapStateToProps, { getSingleProgram, getWorkouts, addWorkout })(ProgramsShow);
+export default connect(
+  mapStateToProps,
+  { getSingleProgram, getWorkouts, addWorkout }
+)(ProgramsShow);

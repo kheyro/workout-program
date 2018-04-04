@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { updateProgram, programHasError } from '../actions/programs'
 
+import { FormErrors } from "../components/Errors";
+
 class ProgramsEdit extends Component {
   constructor(props) {
     super(props);
@@ -25,36 +27,14 @@ class ProgramsEdit extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { updateProgram, history } = this.props;
-
-    updateProgram(this.state).then(() => {
-      if(!this.props.hasError.status) {
-        this.setState({
-          name: '',
-          description: ''
-        })
-        // history.push('/programs');
-      }
-    })
-
+    const { updateProgram } = this.props;
+    updateProgram(this.state).then(() => { if(!this.props.hasError.status) (this.setState({ name: '', description: '' })) })
   };
 
   render() {
-    let error_messages;
-
-    if(this.props.hasError.status) {
-      error_messages = this.props.hasError.errors.map(error =>
-        <div>{error}</div> )
-    }
-
     return (
       <div>
-
-        <div>
-          <ul>
-            {error_messages}
-          </ul>
-        </div>
+        <FormErrors hasError={this.props.hasError} />
 
         <form onSubmit={this.handleSubmit}>
 
