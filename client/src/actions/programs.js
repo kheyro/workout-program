@@ -91,7 +91,7 @@ export function updateProgram(program) {
           return dispatch(programHasError(true, payload))
         } else {
           dispatch(programHasError(false, [], 'Program successfully updated!'));
-          return dispatch({ type: actionTypes.ADD_PROGRAM, payload });
+          return dispatch({ type: actionTypes.UPDATE_PROGRAM, payload });
         }
       })
   }

@@ -18,7 +18,7 @@ class App extends Component {
           <div className="container-fluid">
             <Switch>
               <Route exact path="/" component={ Welcome } />
-              <Route path="/programs/:programId/edit" component={ ProgramsEdit } />
+              <Route path="/programs/:programId/edit" component={ProgramsEdit} />
               <Route path="/programs/new" component={ ProgramsNew } />
               <Route path="/programs" component={ ProgramsPage } />
             </Switch>

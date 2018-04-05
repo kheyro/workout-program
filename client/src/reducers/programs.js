@@ -12,11 +12,7 @@ export function programs(state = [], action) {
       return state.filter(program => program.id !== action.payload);
 
     case actionTypes.UPDATE_PROGRAM:
-      let editedProgram = state.find(program => program.id === action.payload.id);
-      editedProgram.title = action.payload.title;
-      editedProgram.description = action.payload.description;
-      return [].concat(state.filter(p => p.id !== action.payload.id), editedProgram);
-
+      return state.map( program => (program.id === action.payload.id) ? action.payload : program )
     default:
       return state;
   }

@@ -19,12 +19,15 @@ class ProgramsList extends Component {
             key={program.id}
             match={this.props.match}
             program={program}
-            removeProgram={this.deleteProgram} />
+            removeProgram={this.deleteProgram}
+            />
         )}
       </div>
     );
   }
 }
+
+
 
 export default
   withRouter(

@@ -7,7 +7,8 @@ import { getPrograms } from "../actions/programs";
 import { MainContainerLoading } from "../components/Loadings";
 import ProgramsList from './ProgramsList';
 import ProgramsShow from './ProgramsShow';
-import ProgramWelcome from "../components/ProgramWelcome";
+import ProgramWelcome from '../components/ProgramWelcome';
+import ProgramsEdit from './ProgramsEdit';
 
 class ProgramsPage extends Component {
   componentDidMount() {
@@ -26,7 +27,7 @@ class ProgramsPage extends Component {
         <div className="col-8 program-list-right-pane">
           <Switch>
             <Route path={`${this.props.match.url}/:programId`} component={ProgramsShow} />
-            <Route exact path={`${this.props.match.url}`} component={ProgramWelcome}/>
+            <Route path={`${this.props.match.url}`} component={ProgramWelcome}/>
           </Switch>
         </div>
       </div>
